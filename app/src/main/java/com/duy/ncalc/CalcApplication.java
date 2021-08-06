@@ -31,6 +31,8 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 
 public class CalcApplication extends MultiDexApplication {
 
+    private static AppOpenAdManager appOpenAdManager;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -42,5 +44,6 @@ public class CalcApplication extends MultiDexApplication {
                 adManager.createAd();
             }
         });
+        appOpenAdManager = new AppOpenAdManager(this);
     }
 }

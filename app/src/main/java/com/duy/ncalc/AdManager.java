@@ -23,6 +23,7 @@ public class AdManager {
         interstitialAd.setAdUnitId(context.getString(R.string.admob_inter_start_id));
         final AdRequest adRequest = new AdRequest.Builder().build();
         interstitialAd.loadAd(adRequest);
+
     }
 
     public InterstitialAd getInterstitialAd()
