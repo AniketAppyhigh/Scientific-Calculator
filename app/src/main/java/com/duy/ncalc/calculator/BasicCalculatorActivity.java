@@ -28,6 +28,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.Nullable;
+
+import com.duy.ncalc.AdManager;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.view.GravityCompat;
@@ -120,6 +123,7 @@ public class BasicCalculatorActivity extends AbstractCalculatorActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mEvaluator = MathEvaluator.getInstance();
         setContentView(R.layout.activity_basic_calculator);
         bindView();

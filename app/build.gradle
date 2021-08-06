@@ -60,6 +60,7 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.json:json:20140107'

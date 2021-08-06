@@ -19,6 +19,8 @@
 package com.duy.ncalc;
 
 import android.preference.PreferenceManager;
+import android.util.Log;
+
 import androidx.multidex.MultiDexApplication;
 
 import com.duy.calculator.R;
@@ -36,7 +38,8 @@ public class CalcApplication extends MultiDexApplication {
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
-
+                AdManager adManager = new AdManager(getApplicationContext());
+                adManager.createAd();
             }
         });
     }
