@@ -21,7 +21,7 @@ package com.duy.calculator.symja.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.WorkerThread;
+import androidx.annotation.WorkerThread;
 import android.view.View;
 
 import com.duy.calculator.R;

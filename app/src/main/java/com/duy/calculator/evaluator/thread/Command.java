@@ -18,7 +18,7 @@
 
 package com.duy.calculator.evaluator.thread;
 
-import android.support.annotation.WorkerThread;
+import androidx.annotation.WorkerThread;
 
 /**
  * Uses the Command Design Pattern to effectively have lambda expressions in a pre-Java 8 environment.

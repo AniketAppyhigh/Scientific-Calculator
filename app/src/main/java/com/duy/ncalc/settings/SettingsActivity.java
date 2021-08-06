@@ -20,7 +20,7 @@ package com.duy.ncalc.settings;
 
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.duy.calculator.R;

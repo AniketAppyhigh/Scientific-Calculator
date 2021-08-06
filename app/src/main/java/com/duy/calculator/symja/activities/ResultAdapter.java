@@ -18,12 +18,12 @@
 
 package com.duy.calculator.symja.activities;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,12 +46,12 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
     private final static String TAG = "ResultAdapter";
     @NonNull
     private final LayoutInflater inflater;
-    private Activity activity;
+    private AppCompatActivity activity;
     private ArrayList<ResultEntry> resultEntries = new ArrayList<>();
     @Nullable
     private OnItemListener listener = null;
 
-    public ResultAdapter(Activity activity) {
+    public ResultAdapter(AppCompatActivity activity) {
         this.activity = activity;
         this.inflater = LayoutInflater.from(activity);
     }

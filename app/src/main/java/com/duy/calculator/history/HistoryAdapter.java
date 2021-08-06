@@ -18,31 +18,31 @@
 
 package com.duy.calculator.history;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.duy.ncalc.utils.DLog;
 import com.duy.calculator.R;
 import com.duy.calculator.symja.tokenizer.ExpressionTokenizer;
 import com.duy.ncalc.utils.ClipboardManager;
+import com.duy.ncalc.utils.DLog;
 
 import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
     private ArrayList<ResultEntry> itemHistories = new ArrayList<>();
-    private Activity context;
+    private AppCompatActivity context;
     private HistoryListener listener = null;
     private DatabaseHelper database;
     private ExpressionTokenizer tokenizer;
 
-    public HistoryAdapter(Activity context, ExpressionTokenizer tokenizer) {
+    public HistoryAdapter(AppCompatActivity context, ExpressionTokenizer tokenizer) {
         this.context = context;
         database = new DatabaseHelper(context);
         this.itemHistories = database.getAllItemHistory();

@@ -21,7 +21,7 @@ package com.duy.ncalc.document.view;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Duy on 19/7/2016
  */
-public class AutoCompleteFunctionEditText extends android.support.v7.widget.AppCompatMultiAutoCompleteTextView {
+public class AutoCompleteFunctionEditText extends androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView {
 
     private final Handler mHandler = new Handler();
     private HighlightWatcher mHighlightWatcher = new HighlightWatcher();

@@ -29,7 +29,7 @@ import com.duy.ncalc.userinterface.FontManager;
  * Created by Duy on 21-Jan-17.
  */
 
-public class CalcButton extends android.support.v7.widget.AppCompatButton {
+public class CalcButton extends androidx.appcompat.widget.AppCompatButton {
 
     public CalcButton(Context context) {
         super(context);

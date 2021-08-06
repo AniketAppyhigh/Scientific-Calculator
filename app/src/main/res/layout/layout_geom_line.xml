@@ -26,7 +26,7 @@
         android:orientation="vertical"
         android:padding="4dp">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -63,7 +63,7 @@
                         android:gravity="center"
                         android:text="A(xa, ya)" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/editXa"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -71,7 +71,7 @@
                         android:hint="xa"
                         android:inputType="numberSigned|numberDecimal" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/editYa"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -93,7 +93,7 @@
                         android:gravity="center"
                         android:text="B(xb, yb)" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/editXb"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -101,7 +101,7 @@
                         android:hint="xb"
                         android:inputType="numberSigned|numberDecimal" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/editYb"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -328,7 +328,7 @@
                         android:gravity="center"
                         android:text="C(xc, yc)" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/editXc"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -336,7 +336,7 @@
                         android:hint="xc"
                         android:inputType="numberSigned|numberDecimal" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/editYc"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -358,7 +358,7 @@
                         android:gravity="center"
                         android:text="D(xd, xd)" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/editXd"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -367,7 +367,7 @@
                         android:inputType="numberSigned|numberDecimal"
                         android:digits="0123456789.-" />
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/editYd"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -467,7 +467,7 @@
                     android:gravity="center"
                     android:text="M(xm, ym)" />
 
-                <android.support.v7.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/editXm"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -475,7 +475,7 @@
                     android:hint="xm"
                     android:inputType="numberSigned|numberDecimal" />
 
-                <android.support.v7.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/editYm"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

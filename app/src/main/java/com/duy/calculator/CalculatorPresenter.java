@@ -18,7 +18,7 @@
 
 package com.duy.calculator;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Duy on 30-Jun-17.

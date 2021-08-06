@@ -21,7 +21,7 @@
     android:background="?colorPrimary"
     android:orientation="horizontal">
 
-    <android.support.v7.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/img_back"
         style="?imageButtonStyle"
         android:background="?selectableItemBackground"
@@ -29,7 +29,7 @@
         android:padding="8dp"
         android:src="@drawable/ic_arrow_back_white_24dp" />
 
-    <android.support.v7.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/img_setting"
         style="?imageButtonStyle"
         android:background="?selectableItemBackground"
@@ -37,7 +37,7 @@
         android:padding="8dp"
         android:src="@drawable/ic_settings_white_24dp" />
 
-    <android.support.v7.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/img_share"
         style="?imageButtonStyle"
         android:background="?selectableItemBackground"
@@ -46,7 +46,7 @@
         android:src="@drawable/ic_share_white_24dp" />
 
 
-    <android.support.v7.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/img_help"
         style="?imageButtonStyle"
         android:background="?selectableItemBackground"
@@ -54,7 +54,7 @@
         android:padding="8dp"
         android:src="@drawable/ic_help_white_24dp" />
 
-    <android.support.v7.widget.AppCompatImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/img_rate"
         style="?imageButtonStyle"
         android:background="?selectableItemBackground"

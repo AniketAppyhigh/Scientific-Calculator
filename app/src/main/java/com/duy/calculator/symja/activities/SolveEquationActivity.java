@@ -22,8 +22,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.WorkerThread;
-import android.support.design.widget.NavigationView;
+import androidx.annotation.WorkerThread;
+import com.google.android.material.navigation.NavigationView;
 import android.view.View;
 
 import com.duy.calculator.R;

@@ -16,14 +16,14 @@
 
 package com.duy.ncalc.utils;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.widget.Toast;
@@ -106,7 +106,7 @@ public class ViewUtils {
         return color;
     }
 
-    public static boolean showDialog(Activity activity, Dialog dialog) {
+    public static boolean showDialog(AppCompatActivity activity, Dialog dialog) {
         if (activity == null) {
             return false;
         }
@@ -128,7 +128,7 @@ public class ViewUtils {
         if (activity == null) {
             return false;
         }
-        if (activity instanceof Activity && ((Activity) activity).isFinishing()) {
+        if (activity instanceof AppCompatActivity && ((AppCompatActivity) activity).isFinishing()) {
             return false;
         }
         Toast.makeText(activity, idRes, time).show();

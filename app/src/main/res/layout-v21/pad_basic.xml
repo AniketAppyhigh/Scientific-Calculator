@@ -54,7 +54,7 @@
                 android:id="@+id/btn_graph_main"
                 style="?buttonAdvanceStyle"
                 android:enabled="false"
-                android:src="@drawable/ic_graph_black"
+                app:srcCompat="@drawable/ic_graph_black"
                 android:text="@string/graph_2"
                 android:visibility="gone" />
 
@@ -81,7 +81,7 @@
                 android:id="@+id/btn_input_voice"
                 style="?buttonAdvanceStyle"
                 android:scaleType="center"
-                android:src="@drawable/ic_keyboard_voice_white_24dp"
+                app:srcCompat="@drawable/ic_keyboard_voice_white_24dp"
                 android:visibility="gone" />
 
             <com.duy.ncalc.view.CalcButton
@@ -99,7 +99,7 @@
             <ImageButton
                 style="?imageButtonStyle"
                 android:layout_weight="100"
-                android:src="@drawable/ic_fraction_white"
+                app:srcCompat="@drawable/ic_fraction_white"
                 android:visibility="gone" />
         </LinearLayout>
 
@@ -336,7 +336,7 @@
             <ImageButton
                 android:id="@+id/btn_equal"
                 style="?imageButtonStyle"
-                android:src="@drawable/ic_equal" />
+                app:srcCompat="@drawable/ic_equal" />
 
 
         </LinearLayout>

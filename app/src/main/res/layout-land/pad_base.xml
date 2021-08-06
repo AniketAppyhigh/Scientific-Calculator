@@ -23,7 +23,7 @@
     android:orientation="vertical"
     android:weightSum="5">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -76,11 +76,11 @@
                 android:id="@+id/btn_delete"
                 style="?buttonClearStyle"
                 android:contentDescription="@string/delete"
-                android:src="@drawable/ic_backspace_white_24dp"
+                app:srcCompat="@drawable/ic_backspace_white_24dp"
                 android:text="@string/delete" />
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
     <LinearLayout
@@ -345,7 +345,7 @@
             android:id="@+id/btn_equal"
             style="?buttonEqualStyle"
             android:onClick="onButtonClick"
-            android:src="@drawable/ic_equal"
+            app:srcCompat="@drawable/ic_equal"
             android:text="@string/equal" />
     </LinearLayout>
 

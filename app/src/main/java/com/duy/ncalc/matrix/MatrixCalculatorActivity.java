@@ -19,8 +19,8 @@
 package com.duy.ncalc.matrix;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.duy.calculator.R;
 import com.duy.calculator.activities.base.NavDrawerActivity;

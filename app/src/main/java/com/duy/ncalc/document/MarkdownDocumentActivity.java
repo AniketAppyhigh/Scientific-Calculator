@@ -1,10 +1,10 @@
 package com.duy.ncalc.document;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.duy.calculator.R;
 import com.duy.calculator.activities.base.BaseActivity;
@@ -22,7 +22,7 @@ public class MarkdownDocumentActivity extends BaseActivity {
         fragment.startActivityForResult(intent, 0);
     }
 
-    public static void open(Activity activity, FunctionDocumentItem item) {
+    public static void open(AppCompatActivity activity, FunctionDocumentItem item) {
         Intent intent = new Intent(activity, MarkdownDocumentActivity.class);
         intent.putExtra(MarkdownDocumentActivity.EXTRA_ASSET_PATH, item.getAssetPath());
         intent.putExtra(MarkdownDocumentActivity.EXTRA_DOCUMENT_NAME, item.getName());

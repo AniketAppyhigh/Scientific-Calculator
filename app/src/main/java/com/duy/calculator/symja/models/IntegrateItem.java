@@ -19,7 +19,7 @@
 package com.duy.calculator.symja.models;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.duy.calculator.evaluator.Constants;
 import com.duy.calculator.evaluator.FormatExpression;

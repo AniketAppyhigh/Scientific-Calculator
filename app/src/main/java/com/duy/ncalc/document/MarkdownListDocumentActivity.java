@@ -1,7 +1,7 @@
 package com.duy.ncalc.document;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.duy.calculator.R;
 import com.duy.calculator.activities.base.BaseActivity;

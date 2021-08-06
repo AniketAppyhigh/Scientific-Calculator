@@ -18,7 +18,7 @@
 
 package com.duy.calculator;
 
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 import java.util.List;
 

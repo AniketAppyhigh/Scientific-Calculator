@@ -19,7 +19,6 @@
 package com.duy.calculator;
 
 import android.animation.Animator;
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -27,10 +26,11 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.SwitchCompat;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +39,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.duy.ncalc.settings.CalculatorSetting;
 import com.duy.calculator.history.DatabaseHelper;
 import com.duy.calculator.symja.tokenizer.ExpressionTokenizer;
+import com.duy.ncalc.settings.CalculatorSetting;
 import com.duy.ncalc.utils.DLog;
 import com.duy.ncalc.view.AnimationFinishedListener;
 
@@ -54,7 +54,7 @@ import java.util.Locale;
 
 public abstract class AbstractFragment extends Fragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
-    protected Activity mContext;
+    protected AppCompatActivity mContext;
 
     /**
      * translator and evaluator
@@ -76,7 +76,7 @@ public abstract class AbstractFragment extends Fragment
     @Override
     public void onAttach(Context acontext) {
         super.onAttach(acontext);
-        this.mContext = getActivity();
+        this.mContext = (AppCompatActivity) getActivity();
 
         mDatabase = new DatabaseHelper(mContext);
         mPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
