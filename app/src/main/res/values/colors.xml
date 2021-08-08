@@ -24,4 +24,5 @@
 
     <color name="black">#000000</color>
     <color name="color_grey_700">#616161</color>
+    <color name="color_ads">#050000</color>
 </resources>

@@ -20,9 +20,14 @@ package com.duy.ncalc.calculator;
 
 import android.animation.Animator;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,7 +35,13 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 
 import com.duy.ncalc.AdManager;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.formats.MediaView;
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
+import com.google.android.gms.ads.formats.UnifiedNativeAdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.view.GravityCompat;
@@ -39,6 +50,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -46,8 +58,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.duy.calculator.R;
@@ -104,6 +120,8 @@ public class BasicCalculatorActivity extends AbstractCalculatorActivity
     private View mCurrentButton = null;
     private CalculatorState mCurrentState = CalculatorState.INPUT;
     private MathEvaluator mEvaluator;
+    InterstitialAd exitInterstitialAd;
+
     private final View.OnKeyListener mFormulaOnKeyListener = new View.OnKeyListener() {
         @Override
         public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
@@ -127,7 +145,7 @@ public class BasicCalculatorActivity extends AbstractCalculatorActivity
         mEvaluator = MathEvaluator.getInstance();
         setContentView(R.layout.activity_basic_calculator);
         bindView();
-
+        loadExitInterstitial();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mInputDisplay.setShowSoftInputOnFocus(false);
         }
@@ -145,6 +163,167 @@ public class BasicCalculatorActivity extends AbstractCalculatorActivity
         setModeFraction();
         showHelp();
     }
+
+    private void loadExitInterstitial() {
+        exitInterstitialAd = new InterstitialAd(this);
+        exitInterstitialAd.setAdUnitId(getString(R.string.admob_interstitial_ads_id_exit));
+        exitInterstitialAd.loadAd(new AdRequest.Builder().build());
+    }
+
+
+    private void showExitDialog() {
+
+        final AlertDialog dialog;
+        View view = getLayoutInflater().inflate(R.layout.dialog_exit, null);
+        dialog = new AlertDialog.Builder(this).setView(view).create();
+        dialog.show();
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        dialog.getWindow().setLayout((6 * width) / 7, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btn = view.findViewById(R.id.cancel);
+        if (exitInterstitialAd.isLoaded()) {
+            exitInterstitialAd.show();
+            loadExitInterstitial();
+        }
+        loadExitNative(dialog);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        Button btn2 = view.findViewById(R.id.exit);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                if (mDrawerLayout != null) {
+                    if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        mDrawerLayout.closeDrawers();
+                        return;
+                    }
+                }
+                if (mCalculateState == CalculateState.RESULT) {
+                    closeMathView();
+                    return;
+                }
+                BasicCalculatorActivity.this.finish();
+            }
+        });
+
+    }
+
+    private void loadExitNative(final Dialog view) {
+        AdLoader.Builder builder = new AdLoader.Builder((Context) this, getString(R.string.admob_native_exit));
+        builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
+            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
+                FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.fl_adplaceholder);
+                UnifiedNativeAdView unifiedNativeAdView = (UnifiedNativeAdView) BasicCalculatorActivity.this.getLayoutInflater().inflate(R.layout.native_admob_ad, null);
+                populateUnifiedNativeAdView(unifiedNativeAd, unifiedNativeAdView);
+                frameLayout.removeAllViews();
+                frameLayout.addView(unifiedNativeAdView);
+            }
+        });
+
+        AdLoader adLoader = builder.withAdListener(new AdListener() {
+            public void onAdFailedToLoad(int errorCode) {
+            }
+
+            public void onAdClicked() {
+                super.onAdClicked();
+            }
+        }).build();
+
+        adLoader.loadAd(new AdRequest.Builder().build());
+    }
+
+    private void populateUnifiedNativeAdView(UnifiedNativeAd nativeAd, UnifiedNativeAdView adView) {
+
+
+        MediaView mediaView = adView.findViewById(R.id.ad_media);
+        adView.setMediaView(mediaView);
+
+        // Set other ad assets.
+        adView.setHeadlineView(adView.findViewById(R.id.ad_headline));
+        adView.setBodyView(adView.findViewById(R.id.ad_body));
+        adView.setCallToActionView(adView.findViewById(R.id.ad_call_to_action));
+
+        adView.setIconView(adView.findViewById(R.id.ad_app_icon));
+        adView.setPriceView(adView.findViewById(R.id.ad_price));
+        adView.setStarRatingView(adView.findViewById(R.id.ad_stars));
+        adView.setStoreView(adView.findViewById(R.id.ad_store));
+        adView.setAdvertiserView(adView.findViewById(R.id.ad_advertiser));
+
+        // The headline is guaranteed to be in every UnifiedNativeAd.
+        ((TextView) adView.getHeadlineView()).setText(nativeAd.getHeadline());
+
+        // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
+        // check before trying to display them.
+        if (nativeAd.getBody() == null) {
+            adView.getBodyView().setVisibility(View.INVISIBLE);
+        } else {
+            adView.getBodyView().setVisibility(View.VISIBLE);
+            ((TextView) adView.getBodyView()).setText(nativeAd.getBody());
+        }
+
+        if (nativeAd.getCallToAction() == null) {
+            adView.getCallToActionView().setVisibility(View.INVISIBLE);
+        } else {
+            adView.getCallToActionView().setVisibility(View.VISIBLE);
+            ((TextView) adView.getCallToActionView()).setText(nativeAd.getCallToAction());
+        }
+
+        if (nativeAd.getIcon() == null) {
+            adView.getIconView().setVisibility(View.GONE);
+        } else {
+            ((ImageView) adView.getIconView()).setImageDrawable(
+                    nativeAd.getIcon().getDrawable());
+            adView.getIconView().setVisibility(View.VISIBLE);
+        }
+
+        if (nativeAd.getPrice() == null) {
+            adView.getPriceView().setVisibility(View.INVISIBLE);
+        } else {
+            adView.getPriceView().setVisibility(View.VISIBLE);
+            ((TextView) adView.getPriceView()).setText(nativeAd.getPrice());
+        }
+
+        if (nativeAd.getStore() == null) {
+            adView.getStoreView().setVisibility(View.INVISIBLE);
+        } else {
+            adView.getStoreView().setVisibility(View.VISIBLE);
+            ((TextView) adView.getStoreView()).setText(nativeAd.getStore());
+        }
+
+        if (nativeAd.getStarRating() == null) {
+            adView.getStarRatingView().setVisibility(View.INVISIBLE);
+        } else {
+            ((RatingBar) adView.getStarRatingView())
+                    .setRating(nativeAd.getStarRating().floatValue());
+            adView.getStarRatingView().setVisibility(View.VISIBLE);
+        }
+
+        if (nativeAd.getAdvertiser() == null) {
+            adView.getAdvertiserView().setVisibility(View.INVISIBLE);
+        } else {
+            ((TextView) adView.getAdvertiserView()).setText(nativeAd.getAdvertiser());
+            adView.getAdvertiserView().setVisibility(View.VISIBLE);
+        }
+
+        // This method tells the Google Mobile Ads SDK that you have finished populating your
+        // native ad view with this native ad. The SDK will populate the adView's MediaView
+        // with the media content from this native ad.
+        adView.setNativeAd(nativeAd);
+
+    }
+
+
+
+
+
+
 
     public void insertText(String text) {
         //set text display is null if not as operator
@@ -622,17 +801,7 @@ public class BasicCalculatorActivity extends AbstractCalculatorActivity
 
     @Override
     public void onBackPressed() {
-        if (mDrawerLayout != null) {
-            if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-                mDrawerLayout.closeDrawers();
-                return;
-            }
-        }
-        if (mCalculateState == CalculateState.RESULT) {
-            closeMathView();
-            return;
-        }
-        super.onBackPressed();
+        showExitDialog();
     }
 
     @Override
