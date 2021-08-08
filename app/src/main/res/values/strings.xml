@@ -389,4 +389,8 @@
     <string name="pref_summary_DEFAULT_ROOTS_CHOP_DELTA">Replace double values in root algorithms by 0 if they are below this tolerance.</string>
     <string name="pref_summary_RUBI_CONVERT_SYMBOLS">Used to parse Rubi files</string>
     <string name="search">Search</string>
+    <string name="we_would_love_to_hear_from_you">We would love to hear from you!</string>
+    <string name="how_is_your_experience_using_our_app">How is you experience using our app?</string>
+    <string name="remind_later">Remind Later</string>
+    <string name="rate_us">Rate Us</string>
 </resources>

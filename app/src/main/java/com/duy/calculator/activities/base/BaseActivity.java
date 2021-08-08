@@ -84,12 +84,12 @@ public abstract class BaseActivity extends AppCompatActivity
         if (mCalculatorSetting != null) {
             mCalculatorSetting.registerOnSharedPreferenceChangeListener(this);
         }
-        if (!DLog.UI_TESTING_MODE) {
-            // Monitor launch times and interval from installation
-            RateThisApp.onStart(this);
-            // If the criteria is satisfied, "Rate this app" dialog will be shown
-            RateThisApp.showRateDialogIfNeeded(this);
-        }
+//        if (!DLog.UI_TESTING_MODE) {
+//            // Monitor launch times and interval from installation
+//            RateThisApp.onStart(this);
+//            // If the criteria is satisfied, "Rate this app" dialog will be shown
+//            RateThisApp.showRateDialogIfNeeded(this);
+//        }
     }
 
     @Override

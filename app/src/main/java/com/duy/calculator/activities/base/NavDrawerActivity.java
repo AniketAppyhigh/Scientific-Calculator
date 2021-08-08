@@ -21,6 +21,8 @@ package com.duy.calculator.activities.base;
 import android.content.Intent;
 import android.os.Handler;
 import androidx.annotation.NonNull;
+
+import com.duy.ncalc.SmartRating;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -223,7 +225,7 @@ public abstract class NavDrawerActivity extends BaseActivity implements Navigati
                 postStartActivity(intent);
                 break;
             case R.id.nav_rate:
-                gotoPlayStore();
+                SmartRating.getInstance().showRatingDialog(this);
                 break;
             case R.id.nav_prime_factor:
                 intent = new Intent(getApplicationContext(), FactorPrimeActivity.class);
